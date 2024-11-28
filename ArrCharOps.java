@@ -176,7 +176,7 @@ public class ArrCharOps {
      */
     public static int compareTo(String str1, String str2) {
 
-        if (str1 == null || str2 == null) {
+        if (str1.length() == 0 || str2.length() == 0) {
         return -2;
     }
 
