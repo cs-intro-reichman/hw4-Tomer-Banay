@@ -18,7 +18,7 @@ public class Primes {
         }
 
         // Print the count and percentage
-        int totNumbers = n - 1; // Numbers from 2 to n inclusive
+        int totNumbers = n; // Numbers from 2 to n inclusive
         System.out.println("There are " + primes.length + 
                             " primes between 2 and " + n + " (" + 
                             (primes.length * 100 / totNumbers) + "% are primes)");
