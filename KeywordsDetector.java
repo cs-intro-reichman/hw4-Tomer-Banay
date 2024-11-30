@@ -13,20 +13,47 @@ public class KeywordsDetector {
             "Our new technology presents a significant paradigm shift",
             "Effective presentations must be clear, concise, and humble"
         };
-        // Some keywords that typically signal bullshit contents in business presentations 
-        String[] keywords = {"synergy", "disrupt", "leverage", "Paradigm", "transform"};
+        // Some keywords that typically signal bullshit contents in business presentations
+        String[] keywords = {"synergy", "disrupt", "leverage", "paradigm", "transform"};
         detectAndPrint(sentences, keywords);
     }
 
     // Iterates through all the sentences.
-    // If a sentence contains one or more of the kewords, prints it.
+    // If a sentence contains one or more of the keywords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        for (int i = 0 ; i < sentences.length; i ++) {
-            for (int j = 0; j < keywords.length; j++)
-                if (sentences[i].toLowerCase() == keywords[j].toLowerCase()){
-                    System.out.println(sentences[i]);
-                    break;
+        for (int i = 0; i < sentences.length; i++) {
+            String sentence = sentences[i].toLowerCase();
+            boolean foundKeyword = false;
+
+            for (int j = 0; j < keywords.length; j++) {
+                String keyword = keywords[j];
+                int keywordLength = keyword.length();
+                int sentenceLength = sentence.length();
+
+                // check for the keyword
+                for (int h = 0; h <= sentenceLength - keywordLength; h++) {
+                    boolean match = true;
+
+                    // Compare characters of the sentence with the keyword
+                    for (int l = 0; l < keywordLength; l++) {
+                        if (sentence.charAt(h + l) != keyword.charAt(l)) {
+                            match = false;
+                            break;
+                        }
+                    }
+
+                    // print && break
+                    if (match) {
+                        System.out.println(sentences[i]);
+                        foundKeyword = true;
+                        break;
+                    }
+                }
+
+                if (foundKeyword) {
+                    break; // Stop checking for further keywords if one is found
                 }
             }
         }
     }
+}
